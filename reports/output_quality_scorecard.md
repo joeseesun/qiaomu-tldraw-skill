@@ -16,7 +16,7 @@ Owner: 向阳乔木
 | Trust report | pass | `reports/trust-report.json`; no detected secret or private path |
 | Dependency audit | pass | Python stdlib only; no `shell=True`; no community skill dependency; official host allowlist |
 | Bundled tool tests | pass | 6/6; URL rejection, Range resume, CLI parsing, docs search, project inspection, offline app probe |
-| Local Canvas API | pass | bundled stdlib client; current run returned 7 docs, 9 live recipes, 9 helpers |
+| Local Canvas API | pass | bundled stdlib client; clean-install run returned 8 open docs, 9 live recipes, 9 helpers |
 | Official offline app probe | pass | macOS app `com.tldraw.desktop` version/build 1.12.0 found with OS-provided `plutil` |
 | Durable script | pass | `state=applied`, no `lastApplyError` |
 | Canvas lint | pass | 0 actionable lints in the recorded attention dashboard |
@@ -30,7 +30,8 @@ Owner: 向阳乔木
 | Official basic scaffold | pass | forced npmjs registry; telemetry off; official `tldraw/vite-template`; project-info correct |
 | Official basic build | pass with warning | npm install from official registry; `tsc && vite build`; 805 modules; main chunk 1.86 MB warning retained |
 | Official basic browser smoke | pass | Vite dev server ready; HTML loaded; 1440×1000 real Chrome screenshot showed canvas UI |
-| Clean GitHub install | pending for 1.1.0 | v1.0.0 public install proof exists; repeat from merged `main` before claiming 1.1.0 complete |
+| Clean GitHub install | pass | installed from merged `main`; validator, dependency audit, 6/6 tests and doctor passed; three file hashes matched |
+| GitHub release | pass | v1.1.0 published from merge commit `ef6457a`; not draft or prerelease |
 
 ## Human quality notes
 
