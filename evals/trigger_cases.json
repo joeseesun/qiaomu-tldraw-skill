@@ -1,0 +1,29 @@
+{
+  "terms": {
+    "tldraw": ["tldraw", ".tldraw", ".tldr", "画布"],
+    "canvas_action": ["画", "创建", "创作", "复刻", "编辑", "修改", "连线", "可编辑", "交互", "动画", "脚本", "shapeutil", "检查", "lint", "diagram", "canvas", "recreate", "dashboard"],
+    "sdk_action": ["sdk", "react", "starter", "create-tldraw", "应用", "程序", "scaffold"],
+    "negative": ["只要 png", "只要一张图", "不要 tldraw", "画布和源文件都不要", "不使用任何画布 sdk", "不要打开或修改画布", "figma only", "photoshop only"]
+  },
+  "should_trigger": [
+    {"text": "把这个流程做成可编辑的 tldraw 图，箭头要真的连到节点。", "family": "native-diagram"},
+    {"text": "请在当前画布里做一个能点击切换 token 的注意力机制 dashboard。", "family": "durable-ui"},
+    {"text": "照这张截图复刻成 .tldraw，文字和颜色都能改。", "family": "recreation"},
+    {"text": "检查这个 tldraw 文件的 custom ShapeUtil、未知 shapes 和 lint。", "family": "audit"},
+    {"text": "用 create-tldraw starter 搭一个 workflow 应用并验证 build。", "family": "sdk-app"},
+    {"text": "给 tldraw 画布写一个重开后仍会播放的动画脚本。", "family": "animation"}
+  ],
+  "should_not_trigger": [
+    {"text": "生成一张注意力机制 PNG，画布和源文件都不要。", "family": "raster-only"},
+    {"text": "用 Figma 画一个登录页，figma only。", "family": "figma"},
+    {"text": "帮我解释 Transformer 的注意力机制。", "family": "explanation"},
+    {"text": "写一个普通 React 表单，不使用任何画布 SDK。", "family": "generic-react"},
+    {"text": "把照片调成电影色，只要一张图。", "family": "image-edit"}
+  ],
+  "near_neighbor": [
+    {"text": "把 Mermaid 流程图导出 SVG。", "family": "mermaid-export"},
+    {"text": "升级现有 tldraw 项目到最新版并修 TypeScript 报错。", "family": "migration-route"},
+    {"text": "写一份白板应用 PRD，先不要实现。", "family": "prd-only"},
+    {"text": "分析这个 .tldraw 格式，但不要打开或修改画布。", "family": "format-analysis"}
+  ]
+}

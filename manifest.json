@@ -1,0 +1,37 @@
+{
+  "name": "qiaomu-tldraw-skill",
+  "version": "1.0.0",
+  "owner": "向阳乔木",
+  "updated_at": "2026-07-29",
+  "status": "stable",
+  "maturity_tier": "Governed",
+  "lifecycle_stage": "public-release",
+  "license": "MIT",
+  "upstream_inspiration": [
+    "tldraw/tldraw-offline",
+    "tldraw/tldraw",
+    "Zluowa/tldraw-ai-drawing-skills"
+  ],
+  "intent": {
+    "job_to_be_done": "Turn a request, sketch, reference, or application brief into a real editable and verified tldraw canvas or tldraw SDK application.",
+    "target_users": ["designers", "educators", "developers", "coding-agent users"],
+    "inputs": ["text brief", "open tldraw document", "rough sketch", "reference image", "existing SDK project"],
+    "outputs": ["editable .tldraw file", "durable document script", "tldraw SDK app", "screenshot and verification evidence"],
+    "exclusions": ["generic raster-only image generation", "unreviewed SDK migration", "editing unopened archives directly"]
+  },
+  "qiaomu_defaults": {
+    "language": "zh-CN-first",
+    "copyright": "Copyright (c) 向阳乔木",
+    "x": "https://x.com/vista8",
+    "github": "https://github.com/joeseesun/"
+  },
+  "release_gates": [
+    "package validation",
+    "trigger eval",
+    "Skill IR export",
+    "output quality review",
+    "secret scan",
+    "clean install proof",
+    "feature branch and PR"
+  ]
+}

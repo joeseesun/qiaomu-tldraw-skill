@@ -1,0 +1,135 @@
+{
+  "schema_version": "2.0.0-qiaomu-lite",
+  "generated_at": "2026-07-29",
+  "package": {
+    "name": "qiaomu-tldraw-skill",
+    "version": "1.0.0",
+    "owner": "向阳乔木",
+    "maturity_tier": "Governed",
+    "lifecycle_stage": "public-release",
+    "upstream_inspiration": [
+      "tldraw/tldraw-offline",
+      "tldraw/tldraw",
+      "Zluowa/tldraw-ai-drawing-skills"
+    ]
+  },
+  "intent": {
+    "description": "Qiaomu tldraw creation skill and workflow for building, editing, recreating, scripting, linting, testing, and packaging tldraw canvases or tldraw SDK apps. Use when the user asks to 画 tldraw、复刻成可编辑画布、制作流程图/信息图/课件、 创建交互或动画画布、写 custom ShapeUtil/document script、检查 .tldraw 文件， or scaffold a tldraw React application. Route SDK migrations to tldraw-migrate.",
+    "job_to_be_done": "Turn a request, sketch, reference, or application brief into a real editable and verified tldraw canvas or tldraw SDK application.",
+    "target_users": [
+      "designers",
+      "educators",
+      "developers",
+      "coding-agent users"
+    ],
+    "inputs": [
+      "text brief",
+      "open tldraw document",
+      "rough sketch",
+      "reference image",
+      "existing SDK project"
+    ],
+    "outputs": [
+      "editable .tldraw file",
+      "durable document script",
+      "tldraw SDK app",
+      "screenshot and verification evidence"
+    ],
+    "exclusions": [
+      "generic raster-only image generation",
+      "unreviewed SDK migration",
+      "editing unopened archives directly"
+    ]
+  },
+  "triggers": {
+    "should_trigger": [
+      "把这个流程做成可编辑的 tldraw 图，箭头要真的连到节点。",
+      "请在当前画布里做一个能点击切换 token 的注意力机制 dashboard。",
+      "照这张截图复刻成 .tldraw，文字和颜色都能改。",
+      "检查这个 tldraw 文件的 custom ShapeUtil、未知 shapes 和 lint。",
+      "用 create-tldraw starter 搭一个 workflow 应用并验证 build。",
+      "给 tldraw 画布写一个重开后仍会播放的动画脚本。"
+    ],
+    "should_not_trigger": [
+      "生成一张注意力机制 PNG，画布和源文件都不要。",
+      "用 Figma 画一个登录页，figma only。",
+      "帮我解释 Transformer 的注意力机制。",
+      "写一个普通 React 表单，不使用任何画布 SDK。",
+      "把照片调成电影色，只要一张图。"
+    ],
+    "near_neighbor": [
+      "把 Mermaid 流程图导出 SVG。",
+      "升级现有 tldraw 项目到最新版并修 TypeScript 报错。",
+      "写一份白板应用 PRD，先不要实现。",
+      "分析这个 .tldraw 格式，但不要打开或修改画布。"
+    ]
+  },
+  "workflow": [
+    "route delivery surface",
+    "confirm target identity",
+    "read live recipe or SDK source",
+    "build editable semantics",
+    "verify records, visual, interaction, and persistence",
+    "report evidence and gaps"
+  ],
+  "output_contract": [
+    "artifact path",
+    "real screenshot",
+    "editable surface",
+    "verification evidence",
+    "license and trust boundary",
+    "missing evidence"
+  ],
+  "resources": {
+    "references": [
+      "references/canvas-workflows.md",
+      "references/durable-scripts.md",
+      "references/installation-lineage.md",
+      "references/sdk-apps.md",
+      "references/security-governance.md",
+      "references/verification-recovery.md",
+      "references/visual-quality.md"
+    ],
+    "scripts": [
+      "scripts/export_skill_ir.py",
+      "scripts/qiaomu_tldraw.py",
+      "scripts/security_scan.py",
+      "scripts/trigger_eval.py",
+      "scripts/validate_skill.py"
+    ],
+    "examples": [
+      "examples/README.md",
+      "examples/clickable-dashboard/config.js",
+      "examples/clickable-dashboard/main.js",
+      "examples/clickable-dashboard/qiaomuCounterShape.js",
+      "examples/static-diagram.js"
+    ],
+    "evals": [
+      "evals/output/live_canvas_case.json",
+      "evals/trigger_cases.json"
+    ],
+    "reports": [
+      "reports/output_quality_scorecard.md",
+      "reports/skill-ir.json",
+      "reports/trigger-eval.json",
+      "reports/trust-report.json"
+    ]
+  },
+  "portability": {
+    "targets": [
+      "openai",
+      "claude",
+      "generic",
+      "agent-skills-compatible"
+    ],
+    "local_canvas_dependency": "tldraw offline plus its current official Agent Skill",
+    "sdk_dependency": "current create-tldraw CLI and generated project",
+    "degradation": "without a live app, do not claim live canvas verification"
+  },
+  "trust": {
+    "token": "runtime-only, loopback-only, redacted",
+    "document_scripts": "trusted-code-only",
+    "rollback_boundary": "confirmed shape ids, preserved script content, user backup or feature branch",
+    "public_claim_policy": "claim only current recorded evidence; otherwise mark missing evidence"
+  }
+}

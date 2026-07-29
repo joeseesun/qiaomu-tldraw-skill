@@ -1,0 +1,21 @@
+{
+  "id": "interactive-attention-dashboard",
+  "kind": "file-backed fixture",
+  "input_files": [],
+  "prompt": "在 tldraw offline 中创建一个可点击的注意力机制 dashboard，状态持久化，保存并验证。",
+  "output contract": [
+    "a saved .tldraw file",
+    "a real-window screenshot",
+    "script-status applied with no apply error",
+    "interaction changes shape props",
+    "zero actionable canvas lints"
+  ],
+  "assertions": [
+    "target document identity is recorded before mutation",
+    "custom state lives in shape props",
+    "synthetic or real click is followed by an async wait and props readback",
+    "the final screenshot is captured after render settles"
+  ],
+  "human_notes": "Review information hierarchy, legibility, control feedback, and whether the visual genuinely teaches attention rather than decorating a formula.",
+  "evidence_boundary": "A local real-window run exists for the recorded versions. Provider-backed model eval and blind human review are missing evidence."
+}

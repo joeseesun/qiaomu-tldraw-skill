@@ -1,0 +1,35 @@
+name: Bug report
+description: 报告可复现的 skill、脚本或文档问题
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: 请勿提交 token、私有画布、本机数据库、日志或未脱敏截图。
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: skill、tldraw offline、create-tldraw、OS、agent harness 版本
+      placeholder: qiaomu-tldraw-skill 1.0.0; tldraw offline 1.12.0; macOS; Codex
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction
+      description: 最小复现步骤、预期和实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized evidence
+      description: 已脱敏的错误、shape records、script status 或截图
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: 我已移除 token、私有路径、账号信息和未授权素材
+          required: true

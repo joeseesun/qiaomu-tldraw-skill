@@ -1,0 +1,268 @@
+{
+  "ok": true,
+  "description_hits": {
+    "tldraw": [
+      "tldraw",
+      ".tldraw",
+      ".tldr",
+      "画布"
+    ],
+    "canvas_action": [
+      "画",
+      "创建",
+      "复刻",
+      "编辑",
+      "可编辑",
+      "交互",
+      "动画",
+      "shapeutil",
+      "检查",
+      "lint",
+      "canvas"
+    ],
+    "sdk_action": [
+      "sdk",
+      "react",
+      "scaffold"
+    ],
+    "negative": []
+  },
+  "summary": {
+    "total": 15,
+    "passed": 15,
+    "failed": 0
+  },
+  "failures": [],
+  "results": [
+    {
+      "bucket": "should_trigger",
+      "prompt": "把这个流程做成可编辑的 tldraw 图，箭头要真的连到节点。",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "hits": {
+        "tldraw": [
+          "tldraw"
+        ],
+        "canvas_action": [
+          "编辑",
+          "可编辑"
+        ]
+      }
+    },
+    {
+      "bucket": "should_trigger",
+      "prompt": "请在当前画布里做一个能点击切换 token 的注意力机制 dashboard。",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "hits": {
+        "tldraw": [
+          "画布"
+        ],
+        "canvas_action": [
+          "画",
+          "dashboard"
+        ]
+      }
+    },
+    {
+      "bucket": "should_trigger",
+      "prompt": "照这张截图复刻成 .tldraw，文字和颜色都能改。",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "hits": {
+        "tldraw": [
+          "tldraw",
+          ".tldraw",
+          ".tldr"
+        ],
+        "canvas_action": [
+          "复刻"
+        ]
+      }
+    },
+    {
+      "bucket": "should_trigger",
+      "prompt": "检查这个 tldraw 文件的 custom ShapeUtil、未知 shapes 和 lint。",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "hits": {
+        "tldraw": [
+          "tldraw"
+        ],
+        "canvas_action": [
+          "shapeutil",
+          "检查",
+          "lint"
+        ]
+      }
+    },
+    {
+      "bucket": "should_trigger",
+      "prompt": "用 create-tldraw starter 搭一个 workflow 应用并验证 build。",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "hits": {
+        "tldraw": [
+          "tldraw"
+        ],
+        "sdk_action": [
+          "starter",
+          "create-tldraw",
+          "应用"
+        ]
+      }
+    },
+    {
+      "bucket": "should_trigger",
+      "prompt": "给 tldraw 画布写一个重开后仍会播放的动画脚本。",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "hits": {
+        "tldraw": [
+          "tldraw",
+          "画布"
+        ],
+        "canvas_action": [
+          "画",
+          "动画",
+          "脚本"
+        ]
+      }
+    },
+    {
+      "bucket": "should_not_trigger",
+      "prompt": "生成一张注意力机制 PNG，画布和源文件都不要。",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "hits": {
+        "tldraw": [
+          "画布"
+        ],
+        "canvas_action": [
+          "画"
+        ],
+        "negative": [
+          "画布和源文件都不要"
+        ]
+      }
+    },
+    {
+      "bucket": "should_not_trigger",
+      "prompt": "用 Figma 画一个登录页，figma only。",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "hits": {
+        "canvas_action": [
+          "画"
+        ],
+        "negative": [
+          "figma only"
+        ]
+      }
+    },
+    {
+      "bucket": "should_not_trigger",
+      "prompt": "帮我解释 Transformer 的注意力机制。",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "hits": {}
+    },
+    {
+      "bucket": "should_not_trigger",
+      "prompt": "写一个普通 React 表单，不使用任何画布 SDK。",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "hits": {
+        "tldraw": [
+          "画布"
+        ],
+        "canvas_action": [
+          "画"
+        ],
+        "sdk_action": [
+          "sdk",
+          "react"
+        ],
+        "negative": [
+          "不使用任何画布 sdk"
+        ]
+      }
+    },
+    {
+      "bucket": "should_not_trigger",
+      "prompt": "把照片调成电影色，只要一张图。",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "hits": {
+        "negative": [
+          "只要一张图"
+        ]
+      }
+    },
+    {
+      "bucket": "near_neighbor",
+      "prompt": "把 Mermaid 流程图导出 SVG。",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "hits": {}
+    },
+    {
+      "bucket": "near_neighbor",
+      "prompt": "升级现有 tldraw 项目到最新版并修 TypeScript 报错。",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "hits": {
+        "tldraw": [
+          "tldraw"
+        ]
+      }
+    },
+    {
+      "bucket": "near_neighbor",
+      "prompt": "写一份白板应用 PRD，先不要实现。",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "hits": {
+        "sdk_action": [
+          "应用"
+        ]
+      }
+    },
+    {
+      "bucket": "near_neighbor",
+      "prompt": "分析这个 .tldraw 格式，但不要打开或修改画布。",
+      "expected_trigger": false,
+      "predicted_trigger": false,
+      "passed": true,
+      "hits": {
+        "tldraw": [
+          "tldraw",
+          ".tldraw",
+          ".tldr",
+          "画布"
+        ],
+        "canvas_action": [
+          "画",
+          "修改"
+        ],
+        "negative": [
+          "不要打开或修改画布"
+        ]
+      }
+    }
+  ]
+}

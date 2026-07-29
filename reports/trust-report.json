@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "trust_report": "pass",
+  "package": "qiaomu-tldraw-skill",
+  "findings": [],
+  "binary_files_skipped": [
+    "docs/assets/product-screenshot.png"
+  ],
+  "notes": [
+    "Runtime Canvas API tokens are intentionally not read by this scan.",
+    "Binary screenshots are listed but require separate visual review."
+  ]
+}

@@ -1,0 +1,95 @@
+---
+name: qiaomu-tldraw-skill
+description: |
+  Qiaomu tldraw creation skill and workflow for building, editing, recreating,
+  scripting, linting, testing, and packaging tldraw canvases or tldraw SDK apps.
+  Use when the user asks to 画 tldraw、复刻成可编辑画布、制作流程图/信息图/课件、
+  创建交互或动画画布、写 custom ShapeUtil/document script、检查 .tldraw 文件，
+  or scaffold a tldraw React application. Route SDK migrations to tldraw-migrate.
+---
+
+# Qiaomu tldraw Skill
+
+把需求交付为真实、可编辑、可验证的 tldraw 画布或画布程序，而不是只描述怎么画。
+
+Copyright (c) 向阳乔木
+
+## Router Rules
+
+先判断交付面，再读取对应 reference：
+
+- 正在运行的 tldraw offline 画布：先读本机官方 `tldraw-offline/SKILL.md`，再读 [Canvas Workflows](references/canvas-workflows.md)。
+- 根据图片严格复刻：优先联合 `tldraw-recreate`，再读 [Visual Quality](references/visual-quality.md)。
+- 从需求或草图创作：可联合 `tldraw-create`，但以本 skill 的验证和恢复门禁收尾。
+- 可点击、动画、模拟器、仪表盘、自定义形状：读 [Durable Scripts](references/durable-scripts.md)。
+- React / TypeScript tldraw SDK 应用：读 [SDK Apps](references/sdk-apps.md)。
+- 升级现有 tldraw SDK：交给官方 `tldraw-migrate`，不要在本 skill 里猜迁移 API。
+- 只要 PNG/SVG 图，不需要 tldraw 可编辑源文件：不要触发本 skill。
+
+先运行环境检查：
+
+```bash
+python3 scripts/qiaomu_tldraw.py doctor
+```
+
+## Compact Workflow
+
+1. 明确交付：现有画布修改、新建 `.tldraw`、参考图复刻、耐久交互，或 SDK 应用。
+2. 锁定目标文档、页面、选择区和输出路径；多窗口时按名称、`documentId`、路径交叉确认。
+3. 读取真实记录与必要 recipe，再选择原生 shapes、`/exec`、document script 或 SDK 工程。
+4. 先搭语义结构与视觉层级，再补连接、状态、动画和细节。
+5. 保存并验证记录、绑定、lint、脚本状态、真实窗口和交互状态。
+6. 交付路径、截图、可编辑范围、验证结果、限制和恢复办法。
+
+## Non-Negotiables
+
+- 不直接编辑已打开的 `.tldraw` 归档、运行时数据库、WAL、锁文件或 `.script-workspace/**` 生成文件。
+- 不把“只有一个打开窗口”当成“目标窗口”；文档关闭后必须重新发现并核对身份。
+- 语义连接必须有真实 bindings；在 tldraw offline 中优先用 `helpers.createArrowBetweenShapes`。
+- 画布程序的持久状态放进 shape props；`/exec` 监听器和全局变量不是持久交付。
+- 自定义 shape/config 先读官方 live recipe，再写代码；不凭记忆猜当前 SDK API。
+- 不以“保存成功”“脚本 applied”代替视觉和交互证据。
+- 不发布 token、`server.json`、本机绝对路径、私有画布、运行数据库或未经授权的参考素材。
+- 未实测的平台、模型、starter kit 或交互只能标记 `missing evidence`。
+
+## Verification Ladder
+
+按风险从低到高验证：
+
+1. **Identity**：文档名、路径、`documentId`、页面、选择区正确。
+2. **Records**：shape 类型、数量、文本、props、解锁状态符合预期。
+3. **Connections**：有意义的箭头两端有 bindings；lint 无未处理问题。
+4. **Durability**：`script-status.state === "applied"`，无 `lastApplyError`；保存后可重新打开。
+5. **Visual**：真实窗口截图无裁切、遮挡、占位符、旧 shape 警告。
+6. **Interaction**：真实点击/键盘或等价 DOM 事件改变持久 props，等待渲染后再读取和截图。
+7. **App**：SDK 工程的 typecheck、lint、tests、build 和浏览器 smoke test 通过。
+
+详细恢复路径见 [Verification and Recovery](references/verification-recovery.md)。
+
+## Output Contract
+
+交付必须包含：
+
+1. `.tldraw` 文件或 SDK 项目的绝对路径；
+2. 完成后的真实截图，视觉项目不可省略；
+3. 主要 shape、交互与可编辑范围；
+4. 已运行的验证及结果；
+5. 第三方素材、许可证、网络、凭据和持久脚本边界；
+6. 仍为 `missing evidence` 的事项。
+
+## Trust and Rollback Boundary
+
+- 本地 Canvas API bearer token 只在运行时读取，只发往回环地址，不打印、不写入包。
+- 破坏性修改前先读取目标记录并保存当前文档；只删除已确认的 shape ids。
+- document script 会随文件打开执行，只在受信任文件中启用；对外分享前说明脚本存在。
+- 回滚边界是：撤销本次 shape 变更、恢复本次脚本文件、关闭而不保存，或从用户已有备份恢复；不得擅自覆盖用户唯一副本。
+
+## References
+
+- [Installation and Lineage](references/installation-lineage.md)
+- [Canvas Workflows](references/canvas-workflows.md)
+- [Durable Scripts](references/durable-scripts.md)
+- [Visual Quality](references/visual-quality.md)
+- [SDK Apps](references/sdk-apps.md)
+- [Verification and Recovery](references/verification-recovery.md)
+- [Security and Governance](references/security-governance.md)
