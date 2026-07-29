@@ -2,7 +2,7 @@
   "terms": {
     "tldraw": ["tldraw", ".tldraw", ".tldr", "画布"],
     "canvas_action": ["画", "创建", "创作", "复刻", "编辑", "修改", "连线", "可编辑", "交互", "动画", "脚本", "shapeutil", "检查", "lint", "diagram", "canvas", "recreate", "dashboard"],
-    "sdk_action": ["sdk", "react", "starter", "create-tldraw", "应用", "程序", "scaffold"],
+    "sdk_action": ["sdk", "react", "starter", "create-tldraw", "官方 cli", "官方文档", "llms", "docs", "迁移", "应用", "程序", "scaffold"],
     "negative": ["只要 png", "只要一张图", "不要 tldraw", "画布和源文件都不要", "不使用任何画布 sdk", "不要打开或修改画布", "figma only", "photoshop only"]
   },
   "should_trigger": [
@@ -11,7 +11,10 @@
     {"text": "照这张截图复刻成 .tldraw，文字和颜色都能改。", "family": "recreation"},
     {"text": "检查这个 tldraw 文件的 custom ShapeUtil、未知 shapes 和 lint。", "family": "audit"},
     {"text": "用 create-tldraw starter 搭一个 workflow 应用并验证 build。", "family": "sdk-app"},
-    {"text": "给 tldraw 画布写一个重开后仍会播放的动画脚本。", "family": "animation"}
+    {"text": "给 tldraw 画布写一个重开后仍会播放的动画脚本。", "family": "animation"},
+    {"text": "同步 tldraw 官方文档并搜索 ShapeUtil 当前写法。", "family": "official-docs"},
+    {"text": "用 tldraw 官方 CLI 创建 basic starter，不用社区包装器。", "family": "official-cli"},
+    {"text": "把现有 tldraw SDK 项目迁移到最新版，依据官方 releases 修类型错误。", "family": "official-migration"}
   ],
   "should_not_trigger": [
     {"text": "生成一张注意力机制 PNG，画布和源文件都不要。", "family": "raster-only"},

@@ -1,0 +1,114 @@
+{
+  "ok": true,
+  "package": "qiaomu-tldraw-skill",
+  "contract": "zero extra third-party runtime dependencies",
+  "python": {
+    "standard_library_only": true,
+    "files": {
+      "scripts/dependency_audit.py": [
+        "__future__",
+        "argparse",
+        "ast",
+        "json",
+        "pathlib",
+        "re",
+        "sys",
+        "typing"
+      ],
+      "scripts/export_skill_ir.py": [
+        "__future__",
+        "argparse",
+        "datetime",
+        "json",
+        "pathlib",
+        "re"
+      ],
+      "scripts/qiaomu_tldraw.py": [
+        "__future__",
+        "argparse",
+        "datetime",
+        "hashlib",
+        "http",
+        "json",
+        "os",
+        "pathlib",
+        "platform",
+        "re",
+        "shutil",
+        "subprocess",
+        "sys",
+        "tempfile",
+        "typing",
+        "urllib"
+      ],
+      "scripts/security_scan.py": [
+        "__future__",
+        "argparse",
+        "json",
+        "pathlib",
+        "re"
+      ],
+      "scripts/test_qiaomu_tldraw.py": [
+        "http",
+        "json",
+        "pathlib",
+        "qiaomu_tldraw",
+        "tempfile",
+        "unittest"
+      ],
+      "scripts/trigger_eval.py": [
+        "__future__",
+        "argparse",
+        "json",
+        "pathlib",
+        "re"
+      ],
+      "scripts/validate_skill.py": [
+        "__future__",
+        "argparse",
+        "json",
+        "pathlib",
+        "re"
+      ]
+    },
+    "nonstdlib_imports": {}
+  },
+  "subprocess": {
+    "shell_true": [],
+    "allowed_executables": [
+      "node",
+      "npx"
+    ],
+    "official_npm_package": "create-tldraw"
+  },
+  "network": {
+    "enforced_fetch_hosts": [
+      "registry.npmjs.org",
+      "tldraw.dev"
+    ],
+    "expected_hosts": [
+      "tldraw.dev",
+      "registry.npmjs.org",
+      "127.0.0.1"
+    ],
+    "source_urls_in_runtime": [
+      "http://127.0.0.1:{runtime[",
+      "https://github.com/joeseesun/qiaomu-tldraw-skill",
+      "https://github.com/tldraw/tldraw",
+      "https://github.com/tldraw/tldraw-offline",
+      "https://registry.npmjs.org",
+      "https://registry.npmjs.org/",
+      "https://registry.npmjs.org/create-tldraw",
+      "https://tldraw.dev/community/license",
+      "https://tldraw.dev/docs/llm-docs",
+      "https://tldraw.dev/llms-docs.txt",
+      "https://tldraw.dev/llms-examples.txt",
+      "https://tldraw.dev/llms-full.txt",
+      "https://tldraw.dev/llms-releases.txt",
+      "https://tldraw.dev/llms.txt"
+    ]
+  },
+  "third_party_skill_dependencies": [],
+  "forbidden_references": [],
+  "failures": []
+}

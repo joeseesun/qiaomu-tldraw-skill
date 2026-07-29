@@ -1,0 +1,28 @@
+{
+  "id": "official-cli-and-docs-integration",
+  "kind": "file-backed fixture",
+  "input_files": [
+    "scripts/qiaomu_tldraw.py",
+    "references/official-cli.md",
+    "references/official-docs.md"
+  ],
+  "prompt": "只使用 tldraw 官方 CLI 和官方文档创建 basic starter，搜索 ShapeUtil 与 migration guide，不使用社区 skill 或第三方包装器。",
+  "output contract": [
+    "official create-tldraw metadata from registry.npmjs.org",
+    "current CLI templates parsed from create-tldraw --help",
+    "official tldraw.dev docs cached with bytes and SHA-256",
+    "offline search results for SDK and migration queries",
+    "a scaffolded basic starter that passes TypeScript and production build",
+    "a zero-extra-third-party dependency audit"
+  ],
+  "assertions": [
+    "Python runtime imports only standard-library or local modules",
+    "official fetch allowlist contains only tldraw.dev and registry.npmjs.org",
+    "npx command pins registry.npmjs.org and disables telemetry by default",
+    "non-empty scaffold target is rejected",
+    "partial official-doc downloads resume and verify complete length",
+    "public reports contain no user-specific absolute cache path"
+  ],
+  "human_notes": "Review that official source claims match current metadata and that license language separates starter code from the tldraw SDK.",
+  "evidence_boundary": "Basic starter was scaffolded, installed, built, served, and visually inspected on macOS. Other templates and operating systems remain missing evidence."
+}

@@ -1,44 +1,43 @@
-# Installation and Lineage
+# Installation and Official Lineage
 
-## 经过核验的能力面
+本 skill 的运行方法只依赖 tldraw 官方产品与操作系统已有运行时，不依赖社区 skill、第三方 Python 包或第三方 CLI 包装器。
 
-| 能力 | 权威来源 | 本次核验 | 许可证/边界 |
+## 官方能力面
+
+| 能力 | 官方来源 | 集成方式 | 许可证/边界 |
 |---|---|---|---|
-| tldraw offline | `tldraw/tldraw-offline`、`offline.tldraw.com` | 1.12.0，2026-07-27 release | 应用闭源、All rights reserved，不由本仓库分发 |
-| offline Agent Skill + `tq` | 桌面应用 Agent Setup 安装的 `tldraw-offline` | 本机可列文档、recipe、helper | 属于应用分发物；本仓库只调用公开的本地接口 |
-| SDK CLI | npm `create-tldraw` / `npm create tldraw` | 5.2.5；Node `>=22.12.0` | `SEE LICENSE IN LICENSE.md`，遵循 tldraw license |
-| SDK migration skill | `tldraw/tldraw/skills/tldraw-migrate` | 可由 `npx skills` 发现安装 | tldraw monorepo 的许可证边界；实验性、需 review |
-| 创作/复刻社区 skill | `Zluowa/tldraw-ai-drawing-skills` | `tldraw-create`、`tldraw-recreate` | MIT；独立社区项目，非 tldraw 官方 |
+| tldraw offline | `tldraw/tldraw-offline`、`offline.tldraw.com` | 本地文件、Canvas API、document scripts | 应用闭源、All rights reserved；本仓库不分发 |
+| offline Canvas API 文档 | 运行中应用的 `/readme`、`api.recipes` | `offline-readme`、`recipe` | 运行时读取，不复制 token 或内部数据库 |
+| SDK CLI | npm `create-tldraw` / `npm create tldraw` | `cli-help`、`scaffold` | 官方包；遵循包内 tldraw license |
+| SDK 文档 | `tldraw.dev/llms*.txt` | `docs-sync`、`docs-search` | 缓存到用户 cache；本仓库不重新发布全文 |
+| SDK 源码/版本 | `tldraw/tldraw`、npm `tldraw` | official metadata 与 source links | SDK 使用 tldraw license |
 
-版本会变化。公开文档中的“当前”只代表 2026-07-29 的验证结果；执行时重新运行：
+## 安装
 
-```bash
-npm view create-tldraw version engines license dist-tags --json
-gh release view --repo tldraw/tldraw-offline --json tagName,publishedAt,url
-npx skills add tldraw/tldraw --list --full-depth
-```
-
-## 推荐安装
+只需安装本 skill：
 
 ```bash
-npx skills add Zluowa/tldraw-ai-drawing-skills -g \
-  --skill tldraw-create tldraw-recreate -y
-npx skills add tldraw/tldraw -g --skill tldraw-migrate -y --full-depth
-npx create-tldraw@latest --help
+npx skills add joeseesun/qiaomu-tldraw-skill -g -y
 ```
 
-tldraw offline 的 skill 和 helper 应通过应用自身的 Agent Setup 安装/更新。常见共享位置是 `~/skills/tldraw-offline/`，各 agent 可能有副本或指针。不要从本仓库复制一个会随应用漂移的快照。
+使用 SDK CLI 时需要 Node.js / npx；本 skill 会按官方包的 `engines.node` 报告要求：
 
-## 采用了什么，没有采用什么
+```bash
+python3 scripts/qiaomu_tldraw.py official-info
+python3 scripts/qiaomu_tldraw.py cli-help
+```
 
-采用：
+使用 live `.tldraw` 文件时安装并启动 tldraw offline。若应用提供 Agent Setup，可安装它的官方共享 skill/helper；但本 skill 已集成 `/readme`、live recipes 和经过认证的标准库请求路径，不要求任何社区 skill。
 
-- 社区仓库的“创作”和“严格复刻”分流、语义可编辑、同裁切比较、真实 app 测试。
-- 官方 offline skill 的目标身份、records、bindings、recipes、script status 与保存模型。
-- 官方 CLI / starter kits 的项目入口和官方迁移 skill 的版本化迁移职责。
+## Zero-third-party contract
 
-没有采用：
+- Python scripts 只 import 标准库。
+- SDK scaffolding 只调用官方 npm 包 `create-tldraw`。
+- 文档只允许 `https://tldraw.dev/`。
+- npm metadata 只允许 `https://registry.npmjs.org/`。
+- Canvas API 只访问运行中应用声明的 loopback port。
+- 不下载或执行社区 skill、第三方 npm CLI、浏览器扩展或远程 shell script。
 
-- 不复制 tldraw offline 应用、官方 skill、token、runtime 数据库或私有 API 实现。
-- 不把社区示例媒体或大段文本重新包装成自有内容。
-- 不声称所有 starter kits、操作系统、agent harness 或 tldraw 版本都通过端到端测试。
+## 版本漂移
+
+CLI、templates、SDK API 和许可证可能变化。每次 SDK 任务前用 `official-info` 与 `docs-sync` 刷新，不把本文件记录的版本当永远正确。公开 claim 以 `reports/official-source-lock.json` 和当前运行结果为准。
