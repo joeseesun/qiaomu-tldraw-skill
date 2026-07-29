@@ -22,7 +22,7 @@ Owner: 向阳乔木
 | Visual proof | pass | `docs/assets/product-screenshot.png`, real canvas screenshot |
 | Packaged counter example | pass | fresh `.tldraw`; script applied; count `0 → 1`; restored to `0`; lints 0; saved |
 | SDK CLI discovery | pass | `create-tldraw` 5.2.5 help and starter list checked |
-| Clean GitHub install | pending until post-merge | must run from the public repository |
+| Clean GitHub install | pass | source `joeseesun/qiaomu-tldraw-skill`; installed `SKILL.md` hash matches GitHub `main` |
 
 ## Human quality notes
 

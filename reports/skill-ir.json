@@ -110,6 +110,7 @@
     ],
     "reports": [
       "reports/output_quality_scorecard.md",
+      "reports/release-proof.md",
       "reports/skill-ir.json",
       "reports/trigger-eval.json",
       "reports/trust-report.json"

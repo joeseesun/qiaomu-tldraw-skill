@@ -11,7 +11,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-2563eb.svg)](LICENSE)
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-compatible-0f766e.svg)](SKILL.md)
 
-**已验证（2026-07-29）：** tldraw offline 1.12.0、官方 `tq` Canvas API helper、`create-tldraw` 5.2.5、包验证、触发评估、安全扫描与真实交互画布。SDK starter kits 的生成命令已核对；各模板的端到端构建为 `missing evidence`。
+**已验证（2026-07-29）：** tldraw offline 1.12.0、官方 `tq` Canvas API helper、`create-tldraw` 5.2.5、包验证、触发评估、安全扫描、真实交互画布，以及从公开 GitHub 仓库回装。SDK starter kits 的生成命令已核对；各模板的端到端构建为 `missing evidence`。
 
 ## 为什么值得用
 
@@ -182,6 +182,6 @@ python3 ~/.agents/skills/qiaomu-tldraw-skill/scripts/qiaomu_tldraw.py doctor
 
 ## Verified scope and limits
 
-Verified on 2026-07-29 with tldraw offline 1.12.0, its official `tq` Canvas API helper, and `create-tldraw` 5.2.5. Package validation, routing eval, trust scan, and one live interactive canvas workflow were checked. End-to-end builds for every SDK starter kit and Windows/Linux Canvas API behavior remain `missing evidence`.
+Verified on 2026-07-29 with tldraw offline 1.12.0, its official `tq` Canvas API helper, and `create-tldraw` 5.2.5. Package validation, routing eval, trust scan, a live interactive canvas workflow, and a clean reinstall from the public GitHub repository were checked. End-to-end builds for every SDK starter kit and Windows/Linux Canvas API behavior remain `missing evidence`.
 
 The MIT license covers only this repository's original code and documentation. tldraw offline, the tldraw SDK, community skills, model providers, fonts, and reference media retain their own terms. See [Security and Governance](references/security-governance.md) and [Installation and Lineage](references/installation-lineage.md).
