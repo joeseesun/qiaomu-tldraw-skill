@@ -1,6 +1,6 @@
 {
   "name": "qiaomu-tldraw-skill",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "owner": "向阳乔木",
   "updated_at": "2026-07-29",
   "status": "stable",
@@ -10,14 +10,20 @@
   "upstream_inspiration": [
     "tldraw/tldraw-offline",
     "tldraw/tldraw",
-    "Zluowa/tldraw-ai-drawing-skills"
+    "https://tldraw.dev/docs/llm-docs"
   ],
   "intent": {
     "job_to_be_done": "Turn a request, sketch, reference, or application brief into a real editable and verified tldraw canvas or tldraw SDK application.",
     "target_users": ["designers", "educators", "developers", "coding-agent users"],
     "inputs": ["text brief", "open tldraw document", "rough sketch", "reference image", "existing SDK project"],
     "outputs": ["editable .tldraw file", "durable document script", "tldraw SDK app", "screenshot and verification evidence"],
-    "exclusions": ["generic raster-only image generation", "unreviewed SDK migration", "editing unopened archives directly"]
+    "exclusions": ["generic raster-only image generation", "community skill runtime dependencies", "third-party CLI wrappers", "editing unopened archives directly"]
+  },
+  "runtime": {
+    "python": "standard library only",
+    "official_cli": "create-tldraw",
+    "official_docs": "https://tldraw.dev/llms*.txt",
+    "third_party_skill_dependencies": []
   },
   "qiaomu_defaults": {
     "language": "zh-CN-first",

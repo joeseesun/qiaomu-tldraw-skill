@@ -47,8 +47,10 @@ def build(root: Path) -> dict:
 		"resources": {folder: files(root, folder) for folder in ("references", "scripts", "examples", "evals", "reports")},
 		"portability": {
 			"targets": ["openai", "claude", "generic", "agent-skills-compatible"],
-			"local_canvas_dependency": "tldraw offline plus its current official Agent Skill",
-			"sdk_dependency": "current create-tldraw CLI and generated project",
+			"local_canvas_dependency": "tldraw offline; bundled Python stdlib client reads its live official API",
+			"sdk_dependency": "official create-tldraw CLI and generated project",
+			"documentation": "official tldraw.dev LLM exports cached and searched by bundled stdlib tooling",
+			"third_party_skill_dependencies": [],
 			"degradation": "without a live app, do not claim live canvas verification",
 		},
 		"trust": {

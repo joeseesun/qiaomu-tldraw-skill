@@ -1,9 +1,9 @@
 interface:
   display_name: Qiaomu tldraw Skill
-  short_description: 创作、复刻、编程并验证真实可编辑的 tldraw 画布与 SDK 应用
+  short_description: 用官方 CLI、官方文档创作、复刻并验证 tldraw 画布与 SDK 应用
   default_prompt: >-
-    使用 qiaomu-tldraw-skill，把我的需求实现成可编辑且经过真实画布验证的 tldraw 交付物；
-    先确认目标文档和交付面，再选择原生形状、document script 或 SDK 应用。
+    使用 qiaomu-tldraw-skill 和 tldraw 官方 CLI/文档，把我的需求实现成可编辑且经过真实验证的
+    tldraw 交付物；不要依赖社区 skill 或第三方包装器。
 compatibility:
   canonical_format: agent-skills-compatible
   adapter_targets:
@@ -16,11 +16,12 @@ compatibility:
     explicit: qiaomu-tldraw-skill
   execution:
     local_canvas: tldraw-offline Canvas API when installed and running
-    sdk_apps: create-tldraw plus project-provided package scripts
+    sdk_apps: official create-tldraw plus project-provided package scripts
+    official_docs: tldraw.dev LLM documentation cached and searched locally
   trust:
     local_api: bearer token is read at runtime and sent only to loopback
     document_scripts: trusted-code-only
-    external_sources: inspect license and provenance before reuse
+    external_sources: official tldraw hosts only for CLI metadata and docs; inspect asset licenses before reuse
   permissions:
     read_canvas: required for live-canvas tasks
     write_canvas: required only after target identity is confirmed
@@ -28,7 +29,7 @@ compatibility:
     execute_scripts: required for doctor, evals, and durable canvas behavior
   degradation:
     no_offline_app: produce a reviewed SDK plan or project; do not claim live canvas verification
-    no_tq: use the official skill's authenticated curl fallback
+    no_tq: use the bundled Python stdlib Canvas API client
     no_image_tool: use supplied references and native tldraw composition only
 gates:
   mode: Governed

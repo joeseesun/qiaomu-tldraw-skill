@@ -1,44 +1,40 @@
 # SDK Apps
 
-## 官方入口
+## Official-first start
 
-执行时先核对当前 CLI：
-
-```bash
-npm view create-tldraw version engines license dist-tags --json
-npx create-tldraw@latest --help
-```
-
-2026-07-29 核验的 starter kits：`basic`、`multiplayer`、`agent`、`workflow`、`chat`、`image-pipeline`、`branching-chat`、`shader`。不要假设这个列表永远不变。
-
-创建示例：
+在写 SDK code 前：
 
 ```bash
-npm create tldraw@latest my-canvas -- --template basic
-# 等价显式形式
-npx create-tldraw@latest my-canvas --template basic
+python3 scripts/qiaomu_tldraw.py official-info
+python3 scripts/qiaomu_tldraw.py docs-sync --bundle index --bundle docs --bundle examples --bundle releases
+python3 scripts/qiaomu_tldraw.py docs-search "Quick start Editor persistence" --bundle docs
 ```
 
-## 选模板
+新项目使用 [Official CLI](official-cli.md)。已有项目先用 `project-info`，不要重新 scaffold 覆盖。
 
-- `basic`：自定义画布产品、编辑器组件、最小 SDK 起点。
-- `workflow`：节点/连接、状态机、自动化流程。
-- `agent`：模型理解和操作 canvas；需要 provider 配置与额外安全边界。
-- `chat` / `branching-chat`：视觉上下文对话或分支会话。
-- `multiplayer`：实时协作；需要服务器、身份、数据与部署设计。
-- `image-pipeline`：图像处理节点工作流。
-- `shader`：GPU/视觉实验。
+## Minimal official architecture
 
-## 开发门禁
+- `Tldraw` / `TldrawEditor`：canvas React surface。
+- `Editor`：创建、更新、选择、页面、camera、export、events 的主接口。
+- store/schema：持久记录、validation、migrations。
+- `ShapeUtil` / `BindingUtil` / `OverlayUtil`：扩展类型与行为。
+- tools / StateNode：用户交互状态机。
+- UI components / overrides：产品界面扩展。
+- persistence / sync：本地持久化和实时协作是不同架构选择。
 
-1. 读取项目的 `AGENTS.md`、`package.json`、lockfile、scripts 和当前 tldraw 版本。
-2. 使用项目已有包管理器与脚本，不自创另一套命令。
-3. 自定义 shape props 使用 validators 和 module augmentation；遵循当前 type definitions。
-4. 输入到模型或外部 API 的 canvas 数据必须最小化、清理和明确授权。
-5. 依次跑项目配置的 typecheck、lint、unit tests、build。
-6. 启动真实浏览器 smoke test，检查首次加载、编辑、保存/刷新与关键交互。
-7. 需要版本升级时用官方 `tldraw-migrate`，并 review diff。
+具体 signatures 以同步的官方 docs、examples 和安装版本 `.d.ts` 为准。
 
-## 许可证提醒
+## Implementation gates
 
-tldraw SDK 不是本仓库的 MIT 组件。开发可免费使用，生产使用和 watermark/license key 要求以当前 [tldraw license](https://tldraw.dev/community/license) 为准。starter kit 自身的许可证也应在生成项目里重新核对。
+1. 读取项目 `AGENTS.md`、package scripts、lockfile 和 tldraw 版本。
+2. 通过官方 docs 搜索具体概念和 symbol；禁止只凭旧记忆写 API。
+3. custom shape props 使用 validators、migrations 与当前 module augmentation 模式。
+4. meaningful connections 使用 bindings，不把视觉接触误当数据关系。
+5. persistence 明确 document data、session state、assets 和 multiplayer ownership。
+6. 模型或外部 API 接收的 canvas 数据必须最小化、清理并获得授权。
+7. 使用项目已有 package manager 运行 typecheck、lint、test、build。
+8. 真实浏览器检查首次加载、编辑、undo/redo、保存/刷新、关键交互与控制台。
+
+## License gate
+
+tldraw SDK 的 source code 与 packages 使用 tldraw license。默认条款只允许 Development Environment；生产通常需要 trial、commercial 或 hobby license/key。生成 starter 的示例代码、SDK package 和第三方素材可能有不同许可证，逐项核对，不用本仓库 MIT 覆盖它们。

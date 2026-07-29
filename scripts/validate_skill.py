@@ -17,7 +17,13 @@ REQUIRED = [
 	"agents/interface.yaml",
 	"evals/trigger_cases.json",
 	"references/installation-lineage.md",
+	"references/official-cli.md",
+	"references/official-docs.md",
+	"references/official-offline-api.md",
+	"references/sdk-migration.md",
 	"references/security-governance.md",
+	"scripts/test_qiaomu_tldraw.py",
+	"scripts/dependency_audit.py",
 ]
 
 
@@ -39,9 +45,18 @@ def validate(root: Path) -> dict:
 			failures.append(f"frontmatter missing routing term: {term}")
 
 	readme = (root / "README.md").read_text(encoding="utf-8") if (root / "README.md").exists() else ""
-	for term in ["npx skills add", "你可以直接这样说", "Troubleshooting", "# English", "product-screenshot.png"]:
+	for term in ["npx skills add", "你可以直接这样说", "Troubleshooting", "# English", "product-screenshot.png", "零额外第三方依赖"]:
 		if term not in readme:
 			failures.append(f"README missing public surface: {term}")
+
+	public_text = "\n".join(
+		path.read_text(encoding="utf-8")
+		for path in [root / "SKILL.md", root / "README.md", *sorted((root / "references").glob("*.md"))]
+		if path.is_file()
+	)
+	for forbidden in ["Zluowa/tldraw-ai-drawing-skills", "tldraw-create", "tldraw-recreate"]:
+		if forbidden.lower() in public_text.lower():
+			failures.append(f"public package retains third-party runtime dependency: {forbidden}")
 
 	try:
 		manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
@@ -57,6 +72,8 @@ def validate(root: Path) -> dict:
 			failures.append(f"broken markdown link: {link}")
 
 	for path in root.rglob("*"):
+		if any(part in {".git", ".tmp", "__pycache__"} for part in path.parts):
+			continue
 		if path.is_file() and path.stat().st_size > 5_000_000:
 			warnings.append(f"large file: {path.relative_to(root)}")
 	return {"ok": not failures, "package": root.name, "failures": failures, "warnings": warnings}

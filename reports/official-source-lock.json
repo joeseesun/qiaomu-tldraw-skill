@@ -1,0 +1,121 @@
+{
+  "generated_at": "2026-07-29T13:17:50+00:00",
+  "official_only": true,
+  "python_runtime_dependencies": [],
+  "create_tldraw": {
+    "name": "create-tldraw",
+    "requested": "latest",
+    "version": "5.2.5",
+    "engines": {
+      "node": ">=22.12.0"
+    },
+    "license": "SEE LICENSE IN LICENSE.md",
+    "bin": "./cli.cjs",
+    "repository": {
+      "url": "https://github.com/tldraw/tldraw",
+      "type": "git"
+    },
+    "dist_tags": {
+      "revision": "4.5.12",
+      "latest": "5.2.5",
+      "internal": "5.3.0-internal.1640468db8fd",
+      "canary": "5.3.0-canary.eb4ecbf40c4a",
+      "next": "5.3.0-next.af17ff0c1f3d"
+    },
+    "tarball": "https://registry.npmjs.org/create-tldraw/-/create-tldraw-5.2.5.tgz",
+    "integrity": "sha512-lwKLqjCo9g03xfN8IO8xNv0fJMZrYxJ59Td+n6aEBjK3wrYUheUuu9XSEop9OMe3fh9HdKXEb2YB6Gh32Eqxsw==",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "templates": [
+    {
+      "id": "basic",
+      "description": "A minimal tldraw template with Vite, React, and TypeScript."
+    },
+    {
+      "id": "multiplayer",
+      "description": "Real-time multiplayer."
+    },
+    {
+      "id": "agent",
+      "description": "An AI-powered agent."
+    },
+    {
+      "id": "workflow",
+      "description": "Visual node-based builder for workflows."
+    },
+    {
+      "id": "chat",
+      "description": "A chat UI with sketches and images as context for AI."
+    },
+    {
+      "id": "image-pipeline",
+      "description": "Visual node-based builder for image pipelines."
+    },
+    {
+      "id": "branching-chat",
+      "description": "A branching chat interface."
+    },
+    {
+      "id": "shader",
+      "description": "Shaders on the canvas."
+    }
+  ],
+  "documentation": {
+    "index": "https://tldraw.dev/llms.txt",
+    "docs": "https://tldraw.dev/llms-docs.txt",
+    "examples": "https://tldraw.dev/llms-examples.txt",
+    "releases": "https://tldraw.dev/llms-releases.txt",
+    "full": "https://tldraw.dev/llms-full.txt"
+  },
+  "documentation_cache": {
+    "generated_at": "2026-07-29T13:17:41+00:00",
+    "official_hosts": [
+      "registry.npmjs.org",
+      "tldraw.dev"
+    ],
+    "cache_dir": "<user-cache>/qiaomu-tldraw-skill/official-docs",
+    "bundles": [
+      {
+        "bundle": "index",
+        "url": "https://tldraw.dev/llms.txt",
+        "file": "llms-index.txt",
+        "bytes": 19916,
+        "sha256": "f214e4f7821a98dcd0e40ee3c72d82092f3e8e68cc3142a4edcbeb59cf93d072"
+      },
+      {
+        "bundle": "docs",
+        "url": "https://tldraw.dev/llms-docs.txt",
+        "file": "llms-docs.txt",
+        "bytes": 687069,
+        "sha256": "6f84d7859ec8a4a72cefb53965ca5fba9c4043d0f44320c45618ee831c92fd9a"
+      },
+      {
+        "bundle": "examples",
+        "url": "https://tldraw.dev/llms-examples.txt",
+        "file": "llms-examples.txt",
+        "bytes": 1162511,
+        "sha256": "b36b296423781c5eb5e93bc9defe7ac9a92823a68c7b4aa7441ecd6f1aaa4657"
+      },
+      {
+        "bundle": "releases",
+        "url": "https://tldraw.dev/llms-releases.txt",
+        "file": "llms-releases.txt",
+        "bytes": 185680,
+        "sha256": "46509ec7d8414c20f332453ce3e6d0e19c00655ed4d5f9c49b7103378bcf3de7"
+      },
+      {
+        "bundle": "full",
+        "url": "https://tldraw.dev/llms-full.txt",
+        "file": "llms-full.txt",
+        "bytes": 2035330,
+        "sha256": "171066a29eabb851085e581162810d493a137c4b9af0930c83ca02e3a6f4add0"
+      }
+    ]
+  },
+  "source_of_truth": {
+    "sdk_repo": "https://github.com/tldraw/tldraw",
+    "offline_repo": "https://github.com/tldraw/tldraw-offline",
+    "docs": "https://tldraw.dev/docs/llm-docs",
+    "license": "https://tldraw.dev/community/license"
+  }
+}

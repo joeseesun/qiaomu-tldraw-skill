@@ -28,8 +28,8 @@
     "negative": []
   },
   "summary": {
-    "total": 15,
-    "passed": 15,
+    "total": 18,
+    "passed": 18,
     "failed": 0
   },
   "failures": [],
@@ -132,6 +132,59 @@
           "画",
           "动画",
           "脚本"
+        ]
+      }
+    },
+    {
+      "bucket": "should_trigger",
+      "prompt": "同步 tldraw 官方文档并搜索 ShapeUtil 当前写法。",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "hits": {
+        "tldraw": [
+          "tldraw"
+        ],
+        "canvas_action": [
+          "shapeutil"
+        ],
+        "sdk_action": [
+          "官方文档"
+        ]
+      }
+    },
+    {
+      "bucket": "should_trigger",
+      "prompt": "用 tldraw 官方 CLI 创建 basic starter，不用社区包装器。",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "hits": {
+        "tldraw": [
+          "tldraw"
+        ],
+        "canvas_action": [
+          "创建"
+        ],
+        "sdk_action": [
+          "starter",
+          "官方 cli"
+        ]
+      }
+    },
+    {
+      "bucket": "should_trigger",
+      "prompt": "把现有 tldraw SDK 项目迁移到最新版，依据官方 releases 修类型错误。",
+      "expected_trigger": true,
+      "predicted_trigger": true,
+      "passed": true,
+      "hits": {
+        "tldraw": [
+          "tldraw"
+        ],
+        "sdk_action": [
+          "sdk",
+          "迁移"
         ]
       }
     },
