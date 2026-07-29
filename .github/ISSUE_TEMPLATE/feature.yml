@@ -1,0 +1,24 @@
+name: Feature request
+description: 提议新的 tldraw 工作流、验证或参考资料
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: job
+    attributes:
+      label: Recurring job
+      description: 用户反复要完成什么，当前哪里不稳定？
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: Expected output and boundaries
+      description: 应交付什么、明确不做什么、需要哪些证据？
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Upstream sources and licenses
+      description: 官方文档、仓库、版本和许可证

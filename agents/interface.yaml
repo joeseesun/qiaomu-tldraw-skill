@@ -1,0 +1,43 @@
+interface:
+  display_name: Qiaomu tldraw Skill
+  short_description: 创作、复刻、编程并验证真实可编辑的 tldraw 画布与 SDK 应用
+  default_prompt: >-
+    使用 qiaomu-tldraw-skill，把我的需求实现成可编辑且经过真实画布验证的 tldraw 交付物；
+    先确认目标文档和交付面，再选择原生形状、document script 或 SDK 应用。
+compatibility:
+  canonical_format: agent-skills-compatible
+  adapter_targets:
+    - openai
+    - claude
+    - generic
+    - agent-skills-compatible
+  activation:
+    primary: frontmatter-description
+    explicit: qiaomu-tldraw-skill
+  execution:
+    local_canvas: tldraw-offline Canvas API when installed and running
+    sdk_apps: create-tldraw plus project-provided package scripts
+  trust:
+    local_api: bearer token is read at runtime and sent only to loopback
+    document_scripts: trusted-code-only
+    external_sources: inspect license and provenance before reuse
+  permissions:
+    read_canvas: required for live-canvas tasks
+    write_canvas: required only after target identity is confirmed
+    network: optional for installs, official docs, linked references, and SDK scaffolding
+    execute_scripts: required for doctor, evals, and durable canvas behavior
+  degradation:
+    no_offline_app: produce a reviewed SDK plan or project; do not claim live canvas verification
+    no_tq: use the official skill's authenticated curl fallback
+    no_image_tool: use supplied references and native tldraw composition only
+gates:
+  mode: Governed
+  required:
+    - target-identity
+    - output-contract
+    - visual-proof
+    - secret-scan
+    - install-proof
+  conditional:
+    durable-script: applied-status, interaction-readback, cold-reopen
+    sdk-app: typecheck, lint, test, build, browser-smoke
